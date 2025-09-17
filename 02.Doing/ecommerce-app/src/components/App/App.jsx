@@ -1,5 +1,5 @@
+import Layout from "../../layout/Layout";
 import BannerCarousel from "../BannerCarousel/BannerCarousel";
-import Button from "../common/Button";
 
 function App() {
   const images = [
@@ -46,12 +46,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <Layout>
       <BannerCarousel banners={images} />
-      <Button type="submit" disabled={false} onClick={click}>
-        OK
-      </Button>
-    </div>
+    </Layout>
   );
 }
 

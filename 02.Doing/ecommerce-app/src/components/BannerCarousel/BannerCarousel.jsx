@@ -38,7 +38,13 @@ export default function BannerCarousel({ banners }) {
   return (
     <div className="banner-carousel">
       <div className="carousel-container">
-        <div className="banner-slide">
+        <div
+          className="banner-slide"
+          style={{
+            backgroundImage: `url(${currentBanner.image})`,
+            backgroundColor: currentBanner.backgroundColor,
+          }}
+        >
           <div className="banner-content">
             <h1>{currentBanner.title}</h1>
             <p>{currentBanner.subtitle}</p>
