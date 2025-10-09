@@ -68,7 +68,7 @@ export default function AlbumCarousel({ isOpen, album, onClose }) {
             ariaLabel="Imagen Anterior"
           >
             {" "}
-            ‹{" "}
+            «{" "}
           </Button>
           <div className="carousel-image-container">
             <img
@@ -91,7 +91,7 @@ export default function AlbumCarousel({ isOpen, album, onClose }) {
             ariaLabel="Imagen Siguiente"
           >
             {" "}
-            ›{" "}
+            »{" "}
           </Button>
           {/* Thumbnails */}
           {album?.images?.length > 1 && (

@@ -9,7 +9,7 @@ import Albums from "./pages/Albums";
 import EditAlbum from "./pages/EditAlbum";
 import EditPhoto from "./pages/EditPhoto";
 import Photos from "./pages/Photos";
-// import PhotoViewer from "./pages/PhotoViewer";
+import PhotoViewer from "./pages/PhotoViewer";
 
 function App() {
   // Función para obtener datos del localStorage
@@ -66,8 +66,8 @@ function App() {
   const [carouselAlbum, setCarouselAlbum] = useState(null);
 
   // Estado para el visor de fotos en fullscreen
-  // const [isPhotoViewerOpen, setIsPhotoViewerOpen] = useState(false);
-  // const [photoToView, setPhotoToView] = useState(null);
+  const [isPhotoViewerOpen, setIsPhotoViewerOpen] = useState(false);
+  const [photoToView, setPhotoToView] = useState(null);
 
   // useEffect para guardar en localStorage cuando cambian los datos
   useEffect(() => {
@@ -137,7 +137,10 @@ function App() {
   };
 
   // Funciones para manejar fotos
-  const handleViewPhoto = (photo) => {};
+  const handleViewPhoto = (photo) => {
+    setIsPhotoViewerOpen(true);
+    setPhotoToView(photo);
+  };
 
   const handleClosePhotoViewer = () => {};
 
@@ -281,11 +284,11 @@ function App() {
       />
 
       {/* Visor de fotos en fullscreen */}
-      {/* <PhotoViewer
+      <PhotoViewer
         isOpen={isPhotoViewerOpen}
         photo={photoToView}
         onClose={handleClosePhotoViewer}
-      /> */}
+      />
     </div>
   );
 }
