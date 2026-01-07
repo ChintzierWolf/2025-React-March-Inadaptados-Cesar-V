@@ -45,16 +45,24 @@ export default function Footer() {
                 <h3>Categorías</h3>
                 <ul>
                   <li>
-                    <Link to="/category/videojuegos">Videojuegos</Link>
+                    <Link to={"/category/68b0d4189b825d20ce1e5740"} aria-label="Consolas">
+                      Consolas
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/category/consolas">Consolas</Link>
+                    <Link to={"/category/68b0d4189b825d20ce1e5750"} aria-label="Videojuegos">
+                      Videojuegos
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/category/accesorios">Accesorios</Link>
+                    <Link to={"/category/68b0d4189b825d20ce1e5760"} aria-label="Accesorios">
+                      Accesorios
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/category/juegos">Juegos</Link>
+                    <Link to={"/category/68b0d4189b825d20ce1e5770"} aria-label="Más">
+                      Más
+                    </Link>
                   </li>
                 </ul>
               </div>

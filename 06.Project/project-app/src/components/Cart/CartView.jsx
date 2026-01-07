@@ -15,7 +15,7 @@ export default function CartView() {
 
       {cartItems &&
         cartItems.map((item) => (
-          <div className="cart-item" key={item.id}>
+          <div className="cart-item" key={item._id}>
             <div className="cart-item-image">
               <img src={item.image} alt={item.name} loading="lazy" />
             </div>
@@ -29,7 +29,7 @@ export default function CartView() {
               <Button
                 variant="secondary"
                 size="sm"
-                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                onClick={() => updateQuantity(item._id, item.quantity - 1)}
               >
                 <Icon name="minus" size={15}></Icon>
               </Button>
@@ -37,7 +37,7 @@ export default function CartView() {
               <Button
                 variant="secondary"
                 size="sm"
-                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                onClick={() => updateQuantity(item._id, item.quantity + 1)}
               >
                 <Icon name="plus" size={15}></Icon>
               </Button>
@@ -51,7 +51,7 @@ export default function CartView() {
               variant="ghost"
               className="danger"
               size="sm"
-              onClick={() => removeFromCart(item.id)}
+              onClick={() => removeFromCart(item._id)}
               title="Eliminar artículo"
             >
               <Icon name="trash" size={16} />
