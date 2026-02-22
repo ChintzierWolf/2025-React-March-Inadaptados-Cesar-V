@@ -33,20 +33,15 @@ export default function ProductDetails({ productId }) {
 
   const resolvedCategory = useMemo(() => {
     if (!product?.category) return null;
-    // Si category es un objeto (lo esperado ahora)
-    if (typeof product.category === 'object') {
-        return product.category;
-    }
-    // Fallback si fuera string (por compatibilidad vieja)
-    if (typeof product.category === 'string') {
-        return categoriesData.find(c => c.name === product.category);
-    }
-    return null;
+    return (
+      categoriesData.find((cat) => cat._id === product.category._id) ||
+      categoriesData.find(
+        (cat) => cat.name.toLowerCase() === product.category.name?.toLowerCase()
+      ) ||
+      null
+    );
   }, [product]);
-  
-  // Usamos el _id si viene en el objeto, o id si viene del json de categorias
-  const categorySlug = resolvedCategory?._id || resolvedCategory?.id || null;
-  const categoryName = resolvedCategory?.name || (typeof product?.category === 'string' ? product.category : "Categoría");
+  const categorySlug = resolvedCategory?._id || product?.category?.name || null;
 
   const handleAddToCart = () => {
     if (product) addToCart(product, 1);
@@ -73,7 +68,7 @@ export default function ProductDetails({ productId }) {
   }
   if (!product) return null;
 
-  const { name, description, price, stock, image } = product;
+  const { name, description, price, stock, imagesUrl, category } = product;
   const stockBadge = stock > 0 ? "success" : "error";
   const stockLabel = stock > 0 ? "En stock" : "Agotado";
 
@@ -84,17 +79,17 @@ export default function ProductDetails({ productId }) {
           { label: "Inicio", to: "/" },
           categorySlug
             ? {
-                label: categoryName,
+                label: resolvedCategory?.name || category?.name || "Categoría",
                 to: `/category/${categorySlug}`,
               }
-            : { label: categoryName },
+            : { label: "Categoría" },
           { label: name },
         ]}
       />
       <div className="product-details-main">
         <div className="product-details-image">
           <img
-            src={image || "/img/products/placeholder.svg"}
+            src={imagesUrl?.[0] || "/img/products/placeholder.svg"}
             alt={name}
             onError={(event) => {
               event.target.src = "/img/products/placeholder.svg";
@@ -104,9 +99,9 @@ export default function ProductDetails({ productId }) {
         <div className="product-details-info">
           <div className="product-details-title">
             <h1 className="h1">{name}</h1>
-            {categoryName && (
+            {(resolvedCategory?.name || category?.name) && (
               <span className="product-details-category">
-                {categoryName}
+                {resolvedCategory?.name || category?.name}
               </span>
             )}
           </div>

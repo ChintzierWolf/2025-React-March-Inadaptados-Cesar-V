@@ -6,6 +6,7 @@ import Loading from "../components/common/Loading/Loading";
 import homeImagesTop from "../data/homeImagesTop.json";
 import homeImagesBottom from "../data/homeImagesBottom.json";
 import { fetchProducts } from "../services/productService";
+import "./Home.css";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -31,43 +32,51 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <div className="bg-secondary-color" style={{
-        color: 'white',
-        padding: '40px 20px',
-        textAlign: 'center',
-        marginBottom: '20px'
-      }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '10px', color: 'var(--accent-color)' }}>
-          Bienvenido a GamezVazStore
-        </h1>
-        <p className="muted" style={{ fontSize: '1.2rem' }}>
-          Tu destino definitivo para videojuegos, consolas y accesorios.
-        </p>
+    <div className="home-container">
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="hero-content">
+          <h1 className="welcome-title">
+            Bienvenido a <span>GamezVazStore</span>
+          </h1>
+          <p className="welcome-subtitle">
+            Tu destino definitivo para videojuegos, consolas y accesorios de nueva generación.
+          </p>
+        </div>
       </div>
 
-      <div className="banner-carousel-top">
-        <BannerCarousel  banners={homeImagesTop} />
+      {/* Top Banner Carousel */}
+      <div className="home-section">
+        <div className="banner-wrapper">
+          <BannerCarousel banners={homeImagesTop} />
+        </div>
       </div>
       
-      <div className="container">
+      {/* Product List */}
+      <div className="home-section container">
+        <div className="section-title-wrapper">
+          <h2 className="section-title">Novedades y Destacados</h2>
+        </div>
+        
         {loading ? (
-          <Loading>Cargando productos...</Loading>
+          <Loading>Cargando arsenal...</Loading>
         ) : error ? (
           <ErrorMessage>{error}</ErrorMessage>
         ) : products.length > 0 ? (
           <List
-            title="Novedades y Destacados"
             products={products}
             layout="grid"
           />
         ) : (
-          <ErrorMessage>No hay productos en el catálogo</ErrorMessage>
+          <ErrorMessage>No hay productos en el inventario actual.</ErrorMessage>
         )}
       </div>
 
-      <div className="banner-carousel-bottom">
-        <BannerCarousel banners={homeImagesBottom} />
+      {/* Bottom Banner Carousel */}
+      <div className="home-section">
+        <div className="banner-wrapper">
+           <BannerCarousel banners={homeImagesBottom} />
+        </div>
       </div>
 
     </div>
