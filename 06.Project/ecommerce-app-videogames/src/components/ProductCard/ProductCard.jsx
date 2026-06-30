@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 import Badge from "../common/Badge";
 import Button from "../common/Button";
+import Icon from "../common/Icon/Icon";
 import "./ProductCard.css";
 
 export default function ProductCard({ product, orientation = "vertical" }) {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const { name, price, stock, imagesUrl, description } = product || {};
 
   if (!product) {
@@ -27,9 +30,18 @@ export default function ProductCard({ product, orientation = "vertical" }) {
   const handleAddToCart = () => addToCart(product, 1);
   const productLink = `/product/${product._id}`;
   const cardClass = `product-card product-card--${orientation}`;
+  
+  const inWishlist = isInWishlist(product._id);
 
   return (
     <div className={cardClass}>
+      <button 
+        className={`product-card-wishlist-btn ${inWishlist ? "active" : ""}`}
+        onClick={() => toggleWishlist(product)}
+        aria-label="Agregar a favoritos"
+      >
+        <Icon name={inWishlist ? "heartFilled" : "heart"} size={20} />
+      </button>
       <Link to={productLink} className="product-card-image-link">
         <img
           src={product.image || "/img/products/placeholder.svg"}

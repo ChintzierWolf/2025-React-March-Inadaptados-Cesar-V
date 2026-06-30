@@ -9,7 +9,7 @@ Este documento enlista las tareas identificadas que deben abordarse en la próxi
 
 ## 2. Ajustes de Modelos y Datos
 - [ ] **Mapeo de Imágenes (IMPORTANTE)**: Refactorizar `<ProductCard>` y componentes de detalle visual para que la propiedad de la imagen consumida cambie de `product.image` a `product.imagesUrl[0]`, ya que así está mapeado en la colección `Product` de MongoDB.
-- [ ] **Identificadores (IDs)**: Asegurar que los componentes de React lean los identificadores de MongoDB utilizando `_id` en lugar del genérico `id` al buscar o rutear productos específicos.
+- [x] **Identificadores (IDs)**: Asegurar que los componentes de React lean los identificadores de MongoDB utilizando `_id` en lugar del genérico `id` al buscar o rutear productos específicos. (Corregido en `ProductCard.jsx`).
 
 ## 3. Lógica de Negocio y Estado
 - [ ] **Sincronización del Carrito**: Actualmente el Carrito vive estrictamente en el `localStorage` del frontend a través de Context. En una fase madura, planificar si el carrito se sincronizará con la colección `Cart` de la base de datos para recuperar carritos abandonados.

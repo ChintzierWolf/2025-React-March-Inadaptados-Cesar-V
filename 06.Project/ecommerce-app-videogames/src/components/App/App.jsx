@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CartProvider } from "../../context/CartContext";
+import { WishlistProvider } from "../../context/WishlistContext";
 import Layout from "../../layout/Layout";
 import Cart from "../../pages/Cart";
 import CategoryPage from "../../pages/CategoryPage";
@@ -18,7 +19,8 @@ import WishList from "../../pages/WishList";
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <WishlistProvider>
+        <BrowserRouter>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -82,7 +84,8 @@ function App() {
             <Route path="*" element={<div>Ruta no encontrada</div>} />
           </Routes>
         </Layout>
-      </BrowserRouter>
+        </BrowserRouter>
+      </WishlistProvider>
     </CartProvider>
   );
 }

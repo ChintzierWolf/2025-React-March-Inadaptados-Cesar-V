@@ -16,4 +16,9 @@ El frontend está desarrollado en **React (Create React App)**. Cuenta con una a
 4. **Limpieza de Código (Linter)**: 
     - Se eliminó código muerto (variables y funciones sin uso) detectado por las advertencias de compilación de React en `SearchResultsList.jsx`, `CartContext.jsx` y `Checkout.jsx`.
     - Se corrigió la advertencia de dependencias faltantes en el `useEffect` de `Checkout.jsx`.
-5. **Preparación para Integración**: Se analizó el modelo del backend (`product.js`) comprobando que la propiedad `imagesUrl` del frontend es la variable correcta a mantener para la futura integración de imágenes con la base de datos.
+6. **Corrección de Enrutamiento e IDs**: Se analizó el pantallazo blanco (Blank Screen) al intentar abrir un producto individual. Se detectó y corrigió en `ProductCard.jsx` que el componente intentaba apuntar a `.id` en lugar de `._id` (estándar de MongoDB).
+7. **Desarrollo Módulo Wishlist (Lista de Deseos)**: 
+    - Se creó un sistema de estado global (`WishlistContext.jsx`) para manejar artículos favoritos persistentes en `localStorage`.
+    - Se añadió un botón flotante con diseño de corazón en cada `ProductCard` para gestionar la lista.
+    - Se construyó la página principal `WishList.jsx` mapeando las tarjetas en formato de lista (layout vertical y centralizado), reemplazando así una ruta que rompía la aplicación.
+8. **Mantenimiento Linter CSS**: Se agregaron propiedades estándar (`line-clamp`) complementando la variante `-webkit-` en `ProductCard.css` para resolver advertencias de compatibilidad futura mostradas por linters y asegurar la sanidad del código.
