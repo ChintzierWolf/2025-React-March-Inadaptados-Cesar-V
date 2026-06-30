@@ -58,14 +58,7 @@ export default function SearchResultsList() {
   const hasQuery = query.length > 0;
   const showNoResults = hasQuery && !loading && filteredProducts.length === 0;
 
-  const handleQueryChange = (event) => {
-    const value = event.target.value;
-    if (!value.trim()) {
-      setSearchParams({});
-      return;
-    }
-    setSearchParams({ q: value });
-  };
+
 
   return (
     <div className="search-results-fullwidth">

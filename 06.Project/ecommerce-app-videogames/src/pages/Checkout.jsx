@@ -5,7 +5,7 @@ import AddressForm from "../components/Checkout/Address/AddressForm";
 import AddressList from "../components/Checkout/Address/AddressList";
 import PaymentForm from "../components/Checkout/Payment/PaymentForm";
 import PaymentList from "../components/Checkout/Payment/PaymentList";
-import SummarySection from "../components/Checkout/shared/SummarySection";
+
 import Button from "../components/common/Button";
 import ErrorMessage from "../components/common/ErrorMessage/ErrorMessage";
 import Loading from "../components/common/Loading/Loading";
@@ -52,7 +52,7 @@ export default function Checkout() {
         navigate("/cart");
       }
     }
-  }, [cartItems, navigate]);
+  }, [cartItems, navigate, isOrderFinished]);
 
   // --- ESTADOS LOCALES ---
   const [addresses, setAddresses] = useState([]);

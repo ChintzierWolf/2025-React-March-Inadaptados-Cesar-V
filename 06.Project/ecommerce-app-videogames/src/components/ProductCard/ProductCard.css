@@ -7,8 +7,8 @@
   box-shadow: var(--elev-1);
   transition: all 0.3s ease;
   overflow: hidden;
-  min-width: 340px;
-  max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 340px;
 }
 
@@ -40,6 +40,20 @@
   line-height: 1.4;
 }
 
+.product-card-description {
+  font-size: 13px;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-card-description {
+  -webkit-line-clamp: 20; /* Expands to fit the content */
+}
+
 .product-card-price {
   font-size: 20px;
   font-weight: 700;
@@ -51,6 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 12px;
 }

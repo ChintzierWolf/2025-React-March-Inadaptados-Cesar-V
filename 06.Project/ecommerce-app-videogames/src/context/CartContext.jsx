@@ -14,17 +14,11 @@ export function CartProvider({ children }) {
     return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   };
 
-  // Mantener el total actualizado
-  const [total, setTotal] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    const items = savedCart ? JSON.parse(savedCart) : [];
-    return calculateTotal(items);
-  });
+
 
   // Actualizar localStorage cuando cambie el carrito
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
-    setTotal(calculateTotal(cartItems));
   }, [cartItems]);
 
   const removeFromCart = (productId) => {

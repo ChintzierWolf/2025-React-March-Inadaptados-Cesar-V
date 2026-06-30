@@ -25,7 +25,7 @@ export default function ProductCard({ product, orientation = "vertical" }) {
       : { text: "Agotado", variant: "error" };
   const hasDiscount = product.discount && product.discount > 0;
   const handleAddToCart = () => addToCart(product, 1);
-  const productLink = `/product/${product.id}`;
+  const productLink = `/product/${product._id}`;
   const cardClass = `product-card product-card--${orientation}`;
 
   return (
@@ -50,13 +50,8 @@ export default function ProductCard({ product, orientation = "vertical" }) {
           </Link>
         </h3>
         {description && (
-          <p
-            className="muted"
-            style={{ fontSize: "13px", marginBottom: "8px" }}
-          >
-            {description.length > 60
-              ? `${description.substring(0, 60)}...`
-              : description}
+          <p className="muted product-card-description">
+            {description}
           </p>
         )}
         <div className="product-card-price">${price}</div>
