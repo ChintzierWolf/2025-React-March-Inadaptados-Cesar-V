@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
+import useContador from "../hooks/useContador";
 
-function Contador() {
-    const [contador, setContador] = useState (0);
-
-    useEffect(() => {
-        console.log(`Contador: ${contador}`);
-    }, [contador]);
-
-    useEffect(()=>{
-        const id = setInterval(()=>{
-            console.log("Tic-tac");
-        },1000);
-
-        return()=>{
-            clearInterval(id);
-        };
-    }, []);
+function Contador (){
+    const { contador, incrementar, decrementar, reiniciar } = useContador (5);
 
     return(
-        <div>
+        <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '5px'}}>
             <p>Has hecho clic {contador} veces</p>
-            <button onClick={()=>{setContador(contador+1)}}> Aumentar </button>
+            <button onClick={incrementar}> Aumentar + </button>
+            <button onClick={decrementar}> Disminuir - </button>
+            <button onClick={reiniciar}> Reiniciar 0 </button>
         </div>
     );
 }
